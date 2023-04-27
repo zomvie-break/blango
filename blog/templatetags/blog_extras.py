@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django import template
 from django.utils.html import format_html
+from blog.models import Post
 # this instance can registers filters
 register = template.Library()
 
@@ -36,3 +37,16 @@ def row(extra_classes=''):
 @register.simple_tag
 def endrow():
   return format_html('</div>')
+
+@register.simple_tag
+def col(extra_classes=''):
+  return format_html('<div class="col {}">', extra_classes)
+
+@register.simple_tag
+def endcol():
+  return format_html('</div>')
+
+@register.inclusion_tag('blog/post_list.html')
+def recent_post(post):
+  posts = Post.objects.exclude(pk=post.pk)[:5]
+  return {'title':"Recent Posts", "posts":posts}

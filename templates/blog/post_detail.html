@@ -4,14 +4,20 @@
 {% block content %}
 <h2>{{ post.title }}</h2>
 {% row %}
-  <div class="col">
+  {% col %}
     {% include "blog/post_byline.html" %}
-  </div>
+  {% endcol %}
 {% endrow %}
 
 {% row %}
-  <div class="col">
+  {% col %}
     {{ post.content | safe }}
-  </div>
+  {% endcol %}
+{% endrow %}
+
+{% row %}
+  {% col %}
+    {% recent_post post %}
+  {% endcol %}
 {% endrow %}
 {% endblock content %}
