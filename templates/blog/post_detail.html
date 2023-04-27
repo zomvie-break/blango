@@ -1,15 +1,17 @@
 {% extends "base.html" %}
+{% load blog_extras %}
+
 {% block content %}
 <h2>{{ post.title }}</h2>
-<div class="row">
+{% row %}
   <div class="col">
     {% include "blog/post_byline.html" %}
   </div>
-</div>
+{% endrow %}
 
-<div class="row">
+{% row %}
   <div class="col">
     {{ post.content | safe }}
   </div>
-</div>
+{% endrow %}
 {% endblock content %}
