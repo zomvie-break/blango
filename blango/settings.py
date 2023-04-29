@@ -162,6 +162,14 @@ class Dev(Configuration):
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+    # cache is stored in local memory
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+            "LOCATION": "unique-snowflake",
+        }
+    }
+
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,

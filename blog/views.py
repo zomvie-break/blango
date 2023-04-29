@@ -4,8 +4,16 @@ from django.utils import timezone
 from blog.models import Post
 from blog.forms import CommentForm
 
+# for cache
+# from django.views.decorators.cache import cache_page
+# for changing the cache when the headers change (e.g. user)
+# from django.views.decorators.vary import vary_on_cookie
+
 logger = logging.getLogger(__name__)
+
 # Create your views here.
+# @cache_page(300) # this cache depends on the URL and not the user! careful! (@cache_page
+# @vary_on_cookie # changes the cache if the cookie was changed
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now())
   logger.debug("Got %d posts", len(posts))
