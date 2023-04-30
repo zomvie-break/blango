@@ -51,9 +51,11 @@ class Dev(Configuration):
         # external
         'crispy_forms',
         'crispy_bootstrap5',
+        'debug_toolbar',
     ]
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware', # pip3 install django_debug_toolbar on the current environment (e.g. venv)
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -62,6 +64,8 @@ class Dev(Configuration):
         'django.contrib.messages.middleware.MessageMiddleware',
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
+
+    INTERNAL_IPS = ["192.168.10.226"] # this is codios ip for my IDE's app
 
     ROOT_URLCONF = 'blango.urls'
 
