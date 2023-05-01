@@ -66,8 +66,14 @@ class Dev(Configuration):
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
 
-    INTERNAL_IPS = ["192.168.10.226"] # this is codios ip for my IDE's app
+    INTERNAL_IPS = ["192.168.10.226"] # this is codios ip for my IDE's app, used for django debug toolbar
 
+    # this will 'send' emails to the console instead of sending actual emails
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+    # this sets how many days is the activation link valid for
+    ACCOUNT_ACTIVATION_DAYS = 7
+    
     ROOT_URLCONF = 'blango.urls'
 
     TEMPLATES = [
