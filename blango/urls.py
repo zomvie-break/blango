@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('ip/', blog.views.get_ip),
     path('accounts/', include('django.contrib.auth.urls')), # neeeded for 'login' url
+    path("accounts/", include("allauth.urls")), # for allauth but django.contrib.auth.urls take precedence since both of them define some same rules (e.g. login/)
     path('accounts/profile/', blango_auth.views.profile, name='profile'),
     path(
         "accounts/register/",

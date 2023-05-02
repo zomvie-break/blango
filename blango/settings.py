@@ -45,6 +45,7 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'django.contrib.sites', # related to SocialApp objects. 
         'django.contrib.staticfiles',
         'blango_auth.apps.BlangoAuthConfig',
         'blog.apps.BlogConfig',
@@ -53,7 +54,22 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
+
+        # allauth
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
+
     ]
+
+    SITE_ID = 1 # to let know which site object our config applies to.
+
+    # Changes required for allauth to work since we don't have a 'username' in our custom user model
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
     MIDDLEWARE = [
         'debug_toolbar.middleware.DebugToolbarMiddleware', # pip3 install django_debug_toolbar on the current environment (e.g. venv)
