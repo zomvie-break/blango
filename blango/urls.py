@@ -37,7 +37,7 @@ urlpatterns = [
         name="django_registration_register",
     ),
     path('accounts/', include("django_registration.backends.activation.urls")), #apparently this builds on top of the other include
-    path('api/v1/', include('blog.api_urls'))
+    path('api/v1/', include('blog.api.urls')),
 ]
 
 # only show django debug toolbar is debug is True in settings.py
