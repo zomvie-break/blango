@@ -61,8 +61,19 @@ class Dev(Configuration):
         'allauth.account',
         'allauth.socialaccount',
         'allauth.socialaccount.providers.google',
+        
+        # rest framework
+        'rest_framework.authtoken',
 
     ]
+
+    REST_FRAMEWORK = {
+      "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+      ]
+    }
 
     SITE_ID = 1 # to let know which site object our config applies to.
 
